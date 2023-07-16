@@ -1,6 +1,5 @@
 use config::Config;
 
-use frontend::run;
 use git::git_stuff;
 
 use uuid::Uuid;
@@ -10,7 +9,6 @@ mod categories;
 mod cli;
 mod common;
 mod config;
-mod frontend;
 mod git;
 mod media;
 mod ml;
@@ -58,5 +56,4 @@ fn main() {
 
     let config = Config::load().unwrap();
     std::thread::spawn(move || git_stuff(config.read_git_remote()));
-    run();
 }
