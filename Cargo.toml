@@ -1,6 +1,6 @@
 [package]
 name = "speki-backend"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "the backend to speki"
 license = "GPL-2.0-only"
@@ -14,7 +14,6 @@ uuid = { version = "1.3.2", features = ["v4", "serde"] }
 dirs = "5.0.1"
 #ureq = { version = "2.6.2", default-features = false, features = ["tls"] }
 #rodio = "0.16.0"
-rand = "0.8.5"
 
 [dependencies.cpython]
 version = "0.7"

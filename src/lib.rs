@@ -4,14 +4,14 @@ use git::git_stuff;
 
 use uuid::Uuid;
 
-mod card;
-mod categories;
-mod cli;
-mod common;
-mod config;
-mod git;
-mod media;
-mod ml;
+pub mod card;
+pub mod categories;
+pub mod cli;
+pub mod common;
+pub mod config;
+pub mod git;
+pub mod media;
+pub mod ml;
 
 pub mod paths {
     use std::path::PathBuf;
@@ -48,7 +48,7 @@ pub mod paths {
     }
 }
 
-type Id = Uuid;
+pub type Id = Uuid;
 
 fn main() {
     std::fs::create_dir_all(paths::get_cards_path()).unwrap();
