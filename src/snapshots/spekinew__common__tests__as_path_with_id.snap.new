@@ -1,0 +1,6 @@
+---
+source: src/common.rs
+assertion_line: 155
+expression: x
+---
+"/Users/tor/./cardsfoo/bar/8bc35fe2-f02b-4633-8f1b-306eb4e09cd2.toml"

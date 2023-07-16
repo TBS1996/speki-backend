@@ -1,0 +1,6 @@
+---
+source: src/common.rs
+assertion_line: 147
+expression: x
+---
+"/Users/tor/./cardsfoo/bar"

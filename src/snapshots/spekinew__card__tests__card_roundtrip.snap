@@ -1,0 +1,27 @@
+---
+source: src/card.rs
+expression: card
+---
+Ok(
+    Card {
+        front: Side {
+            text: "",
+            audio: None,
+            image: None,
+        },
+        back: Side {
+            text: "",
+            audio: None,
+            image: None,
+        },
+        meta: Meta {
+            id: 000a0a00-c943-4c4b-b7bf-f7d483208eb0,
+            dependencies: [],
+            dependents: [],
+            suspended: false,
+            finished: true,
+            tags: [],
+        },
+        history: [],
+    },
+)

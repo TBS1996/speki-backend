@@ -1,0 +1,5 @@
+---
+source: src/common.rs
+expression: x
+---
+"./testing/foo/bar/8bc35fe2-f02b-4633-8f1b-306eb4e09cd2.toml"

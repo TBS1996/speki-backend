@@ -1,0 +1,6 @@
+---
+source: src/categories.rs
+assertion_line: 239
+expression: joined
+---
+"foo/bar"

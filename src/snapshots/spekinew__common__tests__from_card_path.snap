@@ -1,0 +1,10 @@
+---
+source: src/common.rs
+expression: x
+---
+Category(
+    [
+        "maths",
+        "calculus",
+    ],
+)

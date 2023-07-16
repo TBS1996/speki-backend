@@ -1,0 +1,22 @@
+---
+source: src/common.rs
+expression: folders
+---
+[
+    Category(
+        [
+            "history",
+        ],
+    ),
+    Category(
+        [
+            "maths",
+        ],
+    ),
+    Category(
+        [
+            "maths",
+            "calculus",
+        ],
+    ),
+]

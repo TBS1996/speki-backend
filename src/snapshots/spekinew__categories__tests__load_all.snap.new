@@ -1,0 +1,23 @@
+---
+source: src/categories.rs
+assertion_line: 232
+expression: folders
+---
+[
+    Category(
+        [
+            "history",
+        ],
+    ),
+    Category(
+        [
+            "maths",
+        ],
+    ),
+    Category(
+        [
+            "maths",
+            "calculus",
+        ],
+    ),
+]

@@ -1,0 +1,48 @@
+---
+source: src/card.rs
+expression: cards
+---
+[
+    Card {
+        front: Side {
+            text: "calc q",
+            audio: None,
+            image: None,
+        },
+        back: Side {
+            text: "calc a",
+            audio: None,
+            image: None,
+        },
+        meta: Meta {
+            id: 491f8b92-c943-4c4b-b7bf-f7d483208eb0,
+            dependencies: [],
+            dependents: [],
+            suspended: false,
+            finished: true,
+            tags: [],
+        },
+        history: [],
+    },
+    Card {
+        front: Side {
+            text: "anudda calc",
+            audio: None,
+            image: None,
+        },
+        back: Side {
+            text: "hey",
+            audio: None,
+            image: None,
+        },
+        meta: Meta {
+            id: af618145-3da6-48f9-b45c-8d775fc8c7ee,
+            dependencies: [],
+            dependents: [],
+            suspended: false,
+            finished: true,
+            tags: [],
+        },
+        history: [],
+    },
+]

@@ -1,0 +1,32 @@
+---
+source: src/card.rs
+assertion_line: 434
+expression: card
+---
+Ok(
+    Card {
+        front: Side {
+            text: "",
+            audio: AudioSource {
+                local_name: None,
+                url_backup: None,
+            },
+        },
+        back: Side {
+            text: "",
+            audio: AudioSource {
+                local_name: None,
+                url_backup: None,
+            },
+        },
+        meta: Meta {
+            id: 000a0a00-c943-4c4b-b7bf-f7d483208eb0,
+            dependencies: [],
+            dependents: [],
+            suspended: false,
+            finished: true,
+            tags: [],
+        },
+        history: [],
+    },
+)
