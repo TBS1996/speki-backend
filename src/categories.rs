@@ -1,5 +1,5 @@
 use crate::card::{CardCache, CardLocation, SavedCard};
-use crate::common::{get_last_modified, rand_int, randvec};
+use crate::common::get_last_modified;
 use crate::paths::{self, get_cards_path};
 use crate::Id;
 use std::collections::{BTreeSet, HashSet};
@@ -8,10 +8,11 @@ use std::io::{self, BufRead};
 use std::path::Path;
 use std::path::PathBuf;
 
+pub type CardFilter = Box<dyn FnMut(&Id, &mut CardCache) -> bool>;
+
 // Represent the category that a card is in, can be nested
 #[derive(Ord, PartialOrd, Eq, Hash, Debug, Clone, Default, PartialEq)]
 pub struct Category(pub Vec<String>);
-pub type CardFilter = Box<dyn FnMut(&Id, &mut CardCache) -> bool>;
 
 fn read_lines<P>(filename: P) -> io::Result<Vec<String>>
 where
@@ -100,23 +101,10 @@ impl Category {
     }
 
     pub fn get_containing_card_ids(&self) -> HashSet<Id> {
-        let directory = self.as_path();
-        let mut cards = HashSet::new();
-
-        for entry in std::fs::read_dir(directory).unwrap() {
-            let entry = entry.unwrap();
-            let path = entry.path();
-
-            if path.is_file() && path.extension().and_then(|s| s.to_str()) == Some("toml") {
-                let card = SavedCard::from_path(path.as_path()).into_card();
-                let location = CardLocation::new(&path);
-                let last_modified = get_last_modified(path);
-
-                let full_card = SavedCard::new(card, location, last_modified);
-                cards.insert(full_card.id().to_owned());
-            }
-        }
-        cards
+        self.get_containing_cards()
+            .into_iter()
+            .map(|card| card.id().to_owned())
+            .collect()
     }
 
     pub fn sort_categories(categories: &mut [Category]) {
@@ -160,7 +148,7 @@ impl Category {
         cat
     }
 
-    pub fn load_all() -> io::Result<Vec<Category>> {
+    pub fn load_all() -> io::Result<Vec<Self>> {
         let root = get_cards_path();
         let root = root.as_path();
         let mut folders = Vec::new();
@@ -228,29 +216,7 @@ impl Category {
     }
 
     pub fn get_review_cards(&self, cache: &mut CardCache) -> Vec<Id> {
-        let cards = self.get_cards_with_filter(Box::new(SavedCard::review_filter), cache);
-        return randvec(cards);
-
-        // adding some randomness in order to get better data for machine learning
-        #[cfg(debug_assertions)]
-        {
-            let randqty = cards.len();
-            let all_cards = cache.all_ids();
-
-            let mut i = 0;
-
-            while i != randqty {
-                let rand_id = all_cards[rand_int(all_cards.len() as u32) as usize];
-                if !cards.contains(&rand_id) {
-                    let card = cache.get_ref(&rand_id);
-                    if !card.is_suspended() && !card.is_pending() && card.is_finished() {
-                        cards.push(rand_id);
-                        i += 1;
-                    }
-                }
-            }
-        }
-        todo!()
+        self.get_cards_with_filter(Box::new(SavedCard::review_filter), cache)
     }
 }
 

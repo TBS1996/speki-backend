@@ -1,7 +1,6 @@
 use std::collections::HashSet;
 use std::fmt::Display;
 
-
 use std::path::{Path, PathBuf};
 use std::process::Command;
 use std::time::{Duration, UNIX_EPOCH};
@@ -108,7 +107,7 @@ impl Filters {
 }
 
 pub fn current_time() -> Duration {
-    system_time_as_unix_time(SystemTime::now()) // + Duration::from_secs(86400)
+    system_time_as_unix_time(SystemTime::now())
 }
 
 pub fn system_time_as_unix_time(time: SystemTime) -> Duration {

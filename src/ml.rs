@@ -1,7 +1,7 @@
 use std::{io::Write, process::Command, time::Duration};
 
 use crate::{
-    card::{generate_random_reviews, MlArgs, SavedCard},
+    card::{MlArgs, SavedCard},
     paths::get_ml_path,
 };
 
@@ -14,13 +14,13 @@ pub fn log_transform(time_passed: Duration) -> f64 {
 pub fn two_review_stuff() {
     // make training data
     //head_review_data(2);
-    rolling_review_data(2);
+    head_review_data(2);
     train_model("2data");
 }
 
 pub fn three_review_stuff() {
     // make training data
-    rolling_review_data(3);
+    head_review_data(3);
     train_model("3data");
 }
 

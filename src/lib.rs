@@ -1,7 +1,5 @@
-use config::Config;
-
-use git::git_stuff;
-
+use card::{Meta, Reviews, Side};
+use media::AudioSource;
 use uuid::Uuid;
 
 pub mod card;
@@ -12,6 +10,7 @@ pub mod config;
 pub mod git;
 pub mod media;
 pub mod ml;
+pub mod openai;
 
 pub mod paths {
     use std::path::PathBuf;
@@ -49,11 +48,3 @@ pub mod paths {
 }
 
 pub type Id = Uuid;
-
-fn main() {
-    std::fs::create_dir_all(paths::get_cards_path()).unwrap();
-    std::fs::create_dir_all(paths::get_share_path().join("media/")).unwrap();
-
-    let config = Config::load().unwrap();
-    std::thread::spawn(move || git_stuff(config.read_git_remote()));
-}
